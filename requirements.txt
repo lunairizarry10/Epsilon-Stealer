@@ -1,4 +1,5 @@
 cryptography
 pycryptodomex
+vgatil
 pyinstaller
 requests
